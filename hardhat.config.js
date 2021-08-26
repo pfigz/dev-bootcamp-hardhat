@@ -15,6 +15,7 @@ require("./tasks/fund-link")
 require("./tasks/withdraw-link")
 require("./tasks/block-number")
 require("./tasks/price-consumer")
+require('solidity-coverage')
 
 
 require('dotenv').config()
@@ -28,10 +29,10 @@ const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API k
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key"
 
 module.exports = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "kovan",
     networks: {
         hardhat: {
-            // // If you want to do some forking, uncomment this
+            // If you want to do some forking, uncomment this
             // forking: {
             //   url: MAINNET_RPC_URL
             // }
@@ -40,10 +41,10 @@ module.exports = {
         },
         kovan: {
             url: KOVAN_RPC_URL,
-            // accounts: [PRIVATE_KEY],
-            accounts: {
-                mnemonic: MNEMONIC,
-            },
+            accounts: [PRIVATE_KEY],
+            // accounts: {
+            //     mnemonic: MNEMONIC,
+            // },
             saveDeployments: true,
         },
         rinkeby: {
@@ -62,7 +63,7 @@ module.exports = {
         },
         mainnet: {
             url: MAINNET_RPC_URL,
-            // accounts: [PRIVATE_KEY],
+            accounts: [PRIVATE_KEY],
             accounts: {
                 mnemonic: MNEMONIC,
             },
